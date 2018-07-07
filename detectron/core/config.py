@@ -598,7 +598,8 @@ __C.SOLVER.STEPS = []
 __C.SOLVER.LRS = []
 
 # Maximum number of SGD iterations
-__C.SOLVER.MAX_ITER = 40000
+# __C.SOLVER.MAX_ITER = 40000
+__C.SOLVER.MAX_ITER = 2000
 
 # Momentum to use with SGD
 __C.SOLVER.MOMENTUM = 0.9
