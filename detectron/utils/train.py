@@ -46,6 +46,7 @@ from detectron.utils import lr_policy
 from detectron.utils.training_stats import TrainingStats
 import detectron.utils.env as envu
 import detectron.utils.net as nu
+from tqdm import tqdm
 
 
 def train_model():
@@ -60,7 +61,7 @@ def train_model():
     training_stats = TrainingStats(model)
     CHECKPOINT_PERIOD = int(cfg.TRAIN.SNAPSHOT_ITERS / cfg.NUM_GPUS)
 
-    for cur_iter in range(start_iter, cfg.SOLVER.MAX_ITER):
+    for cur_iter in tqdm(range(start_iter, cfg.SOLVER.MAX_ITER)):
         training_stats.IterTic()
         lr = model.UpdateWorkspaceLr(cur_iter, lr_policy.get_lr_at_iter(cur_iter))
         workspace.RunNet(model.net.Proto().name)
